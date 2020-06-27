@@ -4,19 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { UserComponent } from './user/user.component';
+import { HeaderModule } from '@header/header.module';
+import { UserModule } from '@user/user.module';
+import { LoaderModule } from '@shared/components/loader/loader.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HeaderModule,
+    UserModule,
+    LoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
