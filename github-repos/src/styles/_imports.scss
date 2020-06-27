@@ -1,0 +1,30 @@
+/* Base theme */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/* Toaster */
+@import "~ngx-toastr/toastr.css"; 
+
+/* Mixins */
+@import 'mixins/border-radius';
+@import 'mixins/box-sizing';
+@import 'mixins/css3-prefix';
+@import 'mixins/loader';
+@import 'mixins/transition';
+
+/* Base Styles */
+@import 'base/buttons';
+@import 'base/fonts';
+@import 'base/forms';
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&family=Share+Tech+Mono');
+
+/* Core */
+@import "core/reset";
+
+/* Components */
+@import "components/header";
+@import "components/page";
+@import "components/card";
+@import "components/list";
+@import "components/details";
