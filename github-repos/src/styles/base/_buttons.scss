@@ -1,0 +1,30 @@
+.btn {
+  @include border-radius(50px);
+  @include transition(all 0.2s ease-out);
+  min-width: 111px;
+  min-height: 41px;
+  // background-color: $accent;
+  background-color: transparentize($accent, 0.5);
+  border: none;
+  font-weight: $bold;
+  font-family: $font_accent;
+  text-transform: uppercase;
+  letter-spacing: 0.33px;
+  color: $white;
+  cursor: pointer;
+  
+  &:hover {
+    @extend .color-accent-hover;
+    @extend .font-size-4;
+    background-color: $accent;
+    box-shadow: 0 10px 10px 0 transparentize($accent, 0.85);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: transparentize($accent, 0.2);
+    box-shadow: 0 8px 8px 0 transparentize($accent, 0.8);
+    transform: translate(0px, 2px);
+  }
+}

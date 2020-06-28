@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ListComponent } from '@user/list/list.component';
-import { DetailsComponent } from '@user/details/details.component';
-import { ReposComponent } from '@user/repos/repos.component';
+import { DetailsModule } from '@user/details/details.module';
+import { ListModule } from '@user/list/list.module';
+import { ReposModule } from '@user/repos/repos.module';
+
+import { UserComponent } from '@user/user.component';
 
 @NgModule({
-  declarations: [ListComponent, DetailsComponent, ReposComponent],
+  declarations: [UserComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    DetailsModule,
+    ListModule,
+    ReposModule
   ]
 })
 export class UserModule { }
