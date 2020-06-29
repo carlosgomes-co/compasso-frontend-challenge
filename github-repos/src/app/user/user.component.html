@@ -1,1 +1,16 @@
-<p>user works!</p>
+<section class="page">
+  <app-header [isPage]="false"></app-header>
+  <ng-container *ngIf="searchTerm else noSearchTerm">
+    <app-list [searchTerm]="searchTerm"></app-list>
+  </ng-container>
+
+  <ng-template #noSearchTerm>
+    <div class="row mt-5">
+      <div class="col">
+        <div class="w-100 text-center mt-5 color-accent-hover font-family-accent">
+          <span class="font-size-3">There's no search term 🙈</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</section>

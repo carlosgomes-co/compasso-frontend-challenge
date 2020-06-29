@@ -1,1 +1,112 @@
-// .list { }
+.list {
+  padding: 3rem;
+
+  @media (min-width: 300px) {
+    & {
+      padding: 1rem;
+    }
+  }
+  @media (min-width: 576px) {
+    & {
+      padding: 1.6rem;
+    }
+  }
+  @media (min-width: 768px) {
+    & {
+      padding: 2rem;
+    }
+  }
+  @media (min-width: 992px) {
+    & {
+      padding: 2.6rem;
+    }
+  }
+
+  h3 {
+    @extend .font-family-accent;
+    @extend .font-size-1;
+    @extend .color-accent-hover;
+    text-shadow: 1px 1px 1px $primary;
+  }
+
+  hr {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid transparentize($primary, 0.8);
+    border-left: none;
+  }
+
+  ul {
+    @extend .mt-4;
+    @extend .p-0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    li {
+      @extend .m-3;
+      @extend .p-1;
+      // @include transition(all 0.2s ease-in-out);
+      // min-width: 135px;
+      background: linear-gradient(140deg, transparentize($primary, 0.99), transparentize($primary, 0.8));
+      border-radius: 5px;
+      box-shadow: 5px 20px 10px transparentize($grey-1, 0.6);
+      display: flex;
+
+      // @media (min-width: 300px) {
+      //   & {
+      //     min-width: 1rem;
+      //   }
+      // }
+      // @media (min-width: 576px) {
+      //   & {
+      //     min-width: 1.6rem;
+      //   }
+      // }
+      // @media (min-width: 768px) {
+      //   & {
+      //     min-width: 2rem;
+      //   }
+      // }
+      // @media (min-width: 992px) {
+      //   & {
+      //     min-width: 2.6rem;
+      //   }
+      // }
+
+      &:hover {
+        background: linear-gradient(180deg, transparentize($accent, 0.6), $accent);
+        box-shadow: 5px 18px 3px transparentize($grey-1, 0.8);
+
+        img {
+          box-shadow: 1px 1px 1px transparentize($grey-1, 0.1), 1px 1px 20px transparentize($grey-1, 0.1);
+        }
+      }
+
+      a {
+        text-decoration: none;
+        @extend .ml-2;
+        @extend .mr-2;
+
+        img {
+          @extend .mt-2;
+          box-shadow: 1px 1px 1px transparentize($primary, 0.5), 1px 1px 20px transparentize($primary, 0.6);
+          border-radius: 100px;
+        }
+
+        p {
+          @extend .mt-1;
+          @extend .mb-1;
+          @extend .font-family-accent;
+          @extend .font-size-4;
+          @extend .color-accent-hover;
+          text-shadow: 1px 1px 1px $grey-1;
+        }
+      }
+    }
+  }
+}

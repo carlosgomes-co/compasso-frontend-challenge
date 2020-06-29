@@ -14,17 +14,20 @@
         margin-top: -9px;
 
         .mat-form-field-outline {
-          @extend .bg-grey-10;
+          // @extend .background-color-grey-10;
           top: 9px;
 
           .mat-form-field-outline-start {
-            border: 1px solid $grey-6;
+            border: 1px solid $accent;
             border-right-style: none;
+            border-radius: 50px 0 0 50px;
+            min-width: 50px;
           }
 
           .mat-form-field-outline-end {
-            border: 1px solid $grey-6;
+            border: 1px solid $accent;
             border-left-style: none;
+            border-radius: 0 50px 50px 0;
           }
         }
 
@@ -33,25 +36,31 @@
           .mat-form-field-outline-end,
           .mat-form-field-outline-gap,
           .mat-form-field-outline-start {
-            border-color: $primary;
+            border-color: $accent-hover;
           }
         }
 
         .mat-form-field-infix {
-          @extend .fs-3;
+          @extend .font-size-3;
           font-family: $font_primary;
           font-weight: $medium;
           padding: 20px 0 11px 0;
           border-top: 5px;
-          color: $grey-5;
+          color: $accent;
+          &:hover {
+            input {
+              @include transition(all 0.2s ease-out);
+              color: $accent-hover;
+            }
+          }
 
           .mat-select {
             .mat-select-trigger {
               .mat-select-value {
-                @extend .fs-3;
+                @extend .font-size-3;
                 font-family: $font_primary;
                 font-weight: $medium;
-                color: $grey-5;
+                color: $accent;
               }
 
               .mat-select-arrow-wrapper {
@@ -85,10 +94,10 @@
 .cdk-overlay-container {
   .mat-select-panel {
     .mat-option {
-      @extend .fs-3;
+      @extend .font-size-3;
       font-family: $font_primary;
       font-weight: $medium;
-      color: $grey-5;
+      color: $accent;
     }
   }
 }

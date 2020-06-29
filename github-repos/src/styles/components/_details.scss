@@ -1,60 +1,82 @@
 .details {
-  @include border-radius(5px);
-  @include transition(all 0.2s ease-out);
-  min-height: 90px;
-  margin-top: 30px;
-  margin-left: 15px;
-  margin-bottom: 30px;
-	margin-right: 15px;
-  border-radius: 5px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
-  border: solid 1px $grey-8;
+  @extend .p-5;
 
-  .details-header {
-    display: flex;
-    align-items: center;
-    flex: 1;
+  h3 {
+    @extend .font-family-accent;
+    @extend .font-size-1;
+    text-shadow: 1px 1px 1px $primary;
 
-    .arrow {
-      margin-left: 30px;
-      margin-right: 10px;
-      display: inline-flex;
-      cursor: pointer;
-    }
+    .avatar {
+      display: block;
 
-    .picture {
-      @include border-radius(3px);
-      margin: 20px 13px 20px 8px;
-      display: inline-flex;
-    }
+      .back-btn {
+        @extend .font-family-secondary;
+        @extend .font-size-2;
+        @extend .color-accent;
+        @include transition(all 0.3s ease-in-out);
+        text-decoration: none;
 
-    .text-container {
-      padding: 8px;
-      display: inline-flex;
-      flex-direction: column;
-      flex: 1;
-
-      .text-line {
-        width: 100%;
-        display: flex;
-        flex-basis: auto;
-        align-items: center;
-        flex: 1;
-
-        .name {
-          margin-top: 5px;
-          margin-bottom: 5px;
+        a {
+          margin-top: 0.5rem;
+          margin-right: 0rem;
         }
-        .id {
-          margin-top: 7px;
-          margin-bottom: 5px;
-          word-break: break-all;
-        }
-        p {
-          margin-top: 5px;
-          margin-bottom: 9px;
+
+        &:hover {
+          @extend .color-accent-hover;
         }
       }
+
+      img {
+        max-width: 100%;
+        box-shadow: 1px 1px 1px transparentize($primary, 0.5), 1px 1px 20px transparentize($primary, 0.6);
+        border-radius: 100px;
+      }
+    }
+
+    a {
+      @extend .color-accent-hover;
+      display: inline-flex;
+      margin-top: 1.6rem;
+      // margin-right: 0rem;
+
+      // &:last-child {
+      //   width: 100%;
+      //   display: block;
+      //   text-align: center;
+      //   margin-left: 0;
+      // }
+
+      @media (min-width: 576px) {
+        // &:last-child {
+        //   width: auto;
+        //   display: inline-flex;
+        //   text-align: left;
+        //   margin-left: 1rem;
+        // }
+        display: inline-flex;
+        // margin-top: 1rem;
+        // margin-left: 1rem;
+      }
+      // @media (min-width: 576px) {
+      //   font-size: $font_size * 0.8;
+      // }
+      // @media (min-width: 768px) {
+      //   font-size: $font_size * 0.9;
+      // }
+      // @media (min-width: 992px) {
+      //   font-size: $font_size;
+      // }
+    }
+  }
+
+  .extra-info {
+    @extend .font-family-accent;
+    @extend .font-size-3;
+    @extend .color-accent-hover;
+    text-shadow: 1px 1px 1px $grey-1;
+    
+    a {
+      @extend .color-accent-hover;
     }
   }
 
@@ -62,35 +84,76 @@
     background-color: transparent;
     border-top: none;
     border-right: none;
-    border-bottom: 1px solid $grey-6;
+    border-bottom: 1px solid transparentize($primary, 0.8);
     border-left: none;
   }
 
-  .btn {
-    @include border-radius(50px);
-    @include transition(all 0.2s ease-out);
-    min-width: 111px;
-    min-height: 41px;
-    background-color: transparentize($accent, 0.5);
-    border: none;
-    font-weight: $bold;
-    font-family: $font_primary;
-    text-transform: uppercase;
-    letter-spacing: 0.33px;
-    color: $white;
-    cursor: pointer;
+  .loading {
+    @extend .mt-1;
+    @include transition(all 0.5s ease-in-out);
+    text-align: center;
 
-    &:hover {
-      background-color: $accent;
-      box-shadow: 0 10px 10px 0 transparentize($primary, 0.85);
+    .loader {
+      width: 40px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+
+      .logo-wrapper {
+        @extend .color-accent-hover;
+        @extend .font-size-4;
+        @extend .font-family-accent;
+        width: 80px;
+        height: 80px;
+        line-height: 77px;
+        position: absolute;
+
+        img {
+          max-width: 30px;
+          margin-top: 17px;
+        }
+      }
+
+      .spinner {
+        border: 2px solid transparentize($accent-hover, 0.85);
+        border-radius: 50%;
+        border-top: 2px solid $accent-hover;
+        width: 40px;
+        height: 40px;
+        box-shadow: 0 0px 40px 0 transparentize($accent-hover, 0.8);
+        animation: spin 2s linear infinite;
+      }
     }
-    &:focus {
-      outline: none;
-    }
-    &:active {
-      background-color: transparentize($accent, 0.2);
-      box-shadow: 0 8px 8px 0 transparentize($primary, 0.8);
-      transform: translate(0px, 2px);
-    }
+  }
+  @include loader(20);
+}
+
+.modal {
+  @extend .w-100;
+  @extend .h-75;
+  @extend .d-flex;
+  padding-top: 15vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  .container {
+    @extend .mt-5;
+    @extend .mb-5;
+    @extend .background-color-grey-6;
+    border-radius: 25px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .backdrop {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(15deg, $accent, transparentize(#4b2acfb8, 0.6));
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
   }
 }

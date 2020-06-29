@@ -1,1 +1,39 @@
-<p>repos works!</p>
+<div class="repos">
+  <h4>
+    <div [ngSwitch]="type" class="color-accent font-family-accent font-size-3 mt-4">
+      <span *ngSwitchCase="'repos'" @fade>
+        📁 <small>{{data?.length ? ('('+ data.length +') ') : ''}}</small>
+        Repos from {{userName}}
+      </span>
+      <span *ngSwitchCase="'starred'" @fade>
+        ⭐ <small>{{data?.length ? ('('+ data.length +') ') : ''}}</small>
+        Starred repos from {{userName}}
+      </span>
+    </div>
+  </h4>
+
+  <hr>
+
+  <ol *ngIf="!loading && data?.length" @fade>
+    <li *ngFor="let item of data" class="text-left">
+      <a class="" [href]="item.html_url" [ngbTooltip]="'View '+ item.name +' in GitHub'">
+        <small>{{item.owner.login}} / </small><span class="color-accent">{{item.name}}</span>
+      </a>
+    </li>
+  </ol>
+
+  <div *ngIf="!loading && data.length === 0" class="row mt-5 mb-5">
+    <div class="col">
+      <div class="w-100 text-center color-grey-3 font-family-accent">
+        <span class="font-size-3">There's no repositories found 🙉</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading" [ngbTooltip]="'Loading'">
+    <div class="loader" @fade>
+      <div class="logo-wrapper">Loading</div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+</div>

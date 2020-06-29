@@ -15,6 +15,32 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@node/*": [
+        "node_modules/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@img/*": [
+        "src/assets/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@libs/*": [
+        "src/app/libs/*"
+      ],
+      "@shared/*": [
+        "src/app/shared/*"
+      ],
+      "@header/*": [
+        "src/app/header/*"
+      ],
+      "@user/*": [
+        "src/app/user/*"
+      ]
+    }
   }
 }

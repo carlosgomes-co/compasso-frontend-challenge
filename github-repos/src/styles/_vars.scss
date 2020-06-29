@@ -1,10 +1,11 @@
 /* Theme colors */
-$background: #f8f9fd;
-$primary: #873deb;
-$white: #ffffff;
-$accent: #28cc9b;
+$background: #3e3f6f;
+$background-active: #f8f9fd;
+$primary: #24ddeb;
+$accent: #712acf;
+$accent-hover: #c9ff74;
 $grey-1: #363840;
-$grey-2: #4c5164;
+$grey-2: #4c5964;
 $grey-3: #808080;
 $grey-4: #81879c;
 $grey-5: #7b7e8c;
@@ -15,33 +16,43 @@ $grey-9: #d3d5e0;
 $grey-10: #fcfcfe;
 
 $colors: (
-  'background': $background,
-  'primary': $primary,
-  'white': $white,
-  'accent': $accent,
-  'grey-1': $grey-1,
-  'grey-2': $grey-2,
-  'grey-3': $grey-3,
-  'grey-4': $grey-4,
-  'grey-5': $grey-5,
-  'grey-6': $grey-6,
-  'grey-7': $grey-7,
-  'grey-8': $grey-8,
-  'grey-9': $grey-9,
-  'grey-10': $grey-10
+  "background": $background,
+  "background-active": $background-active,
+  "primary": $primary,
+  "accent": $accent,
+  "accent-hover": $accent-hover,
+  "grey-1": $grey-1,
+  "grey-2": $grey-2,
+  "grey-3": $grey-3,
+  "grey-4": $grey-4,
+  "grey-5": $grey-5,
+  "grey-6": $grey-6,
+  "grey-7": $grey-7,
+  "grey-8": $grey-8,
+  "grey-9": $grey-9,
+  "grey-10": $grey-10,
 );
 
 /* Font config */
-$font_primary: 'JFont';
+/* Font Families */
+$font_primary: 'Quicksand', sans-serif;
+$font_secondary: 'Share Tech', sans-serif;
+$font_accent: 'Share Tech Mono', monospace;
+
+$font_families: (
+  "primary": $font_primary,
+  "secondary": $font_secondary,
+  "accent": $font_accent,
+);
 
 /* Font sizes */
 $font_sizes: (
-  1: 18px,
-  2: 15px,
-  3: 14px,
-  4: 12px,
-  5: 10px,
-  6: 9px
+  1: 39px,
+  2: 29px,
+  3: 19px,
+  4: 13px,
+  5: 12px,
+  6: 10px,
 );
 
 /* Font weight */
@@ -53,47 +64,70 @@ $extrabold: 500;
 $black: 600;
 
 $font_weights: (
-  'light': $light,
-  'regular': $regular,
-  'medium': $medium,
-  'bold': $bold,
-  'extrabold': $extrabold,
-  'black': $black
+  "light": $light,
+  "regular": $regular,
+  "medium": $medium,
+  "bold": $bold,
+  "extrabold": $extrabold,
+  "black": $black,
 );
 
 /* Build */
-html {
+.vars {
   /* Colors */
   @each $name, $color in $colors {
     /* make colors accessible via: var(--color-name) */
-    --#{$name}: #{$color};
+    --c-#{$name}: #{$color};
 
     /* class */
-    .#{$name} {
+    .color-#{$name} {
       color: #{$color};
     }
 
     /* background */
-    .bg-#{$name} {
+    .background-color-#{$name} {
       background-color: #{$color};
     }
   }
 
-  /* Fonts */
-  @each $number, $font_size in $font_sizes {
-    /* make font_sizes accessible via: var(--fs-number) */
-    --fs-#{$number}: #{$font_size};
+  /* Font Families */
+  @each $name, $font_family in $font_families {
+    --ff-#{$name}: #{$font_family};
 
     /* class */
-    .fs-#{$number} {
-      font-size: $font_size;
+    .font-family-#{$name} {
+      font-family: $font_family;
     }
   }
 
-  /* Fonts weight */
-  @each $name, $font_weight in $font_weights {
+  /* Font sizes */
+  @each $number, $font_size in $font_sizes {
+    --fs-#{$number}: #{$font_size};
+
     /* class */
-    .#{$name} {
+    .font-size-#{$number} {
+      font-size: $font_size;
+      @media (min-width: 300px) {
+        font-size: $font_size * 0.7;
+      }
+      @media (min-width: 576px) {
+        font-size: $font_size * 0.8;
+      }
+      @media (min-width: 768px) {
+        font-size: $font_size * 0.9;
+      }
+      @media (min-width: 992px) {
+        font-size: $font_size;
+      }
+    }
+  }
+
+  /* Font weight */
+  @each $name, $font_weight in $font_weights {
+    --fw-#{$name}: #{$font_weight};
+
+    /* class */
+    .font-weight-#{$name} {
       font-weight: $font_weight;
     }
   }
