@@ -9,12 +9,15 @@
 
 <ng-container *ngIf="!loading && data?.length else noSearchTerm">
   <div class="list page">
-    <h3>Users found 🙌</h3>
+    <h3>
+      <small>{{data?.length ? ('('+ data.length +') ') : ''}}</small>
+      Users found 🙌
+    </h3>
     <hr>
     <ul @fade>
       <li *ngFor="let item of data" class="text-center">
         <a class="w-100" [routerLink]="['/user/', item.login]" [ngbTooltip]="'View '+ item.login +' details'">
-          <img [alt]="item.login" [width]="75" [src]="item.avatar_url">
+          <img [alt]="item.login" [width]="75" [height]="75" [src]="item.avatar_url">
           <p>
             {{item.login}}
           </p>

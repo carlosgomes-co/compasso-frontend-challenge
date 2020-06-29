@@ -14,6 +14,9 @@
           <div
             class="col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5">
             <mat-form-field appearance="outline" class="w-100">
+              <div *ngIf="searchTerm.length" style="position: absolute; right: 10px; cursor: pointer;" (click)="searchTerm='';">
+                <span class="mr-1">❌</span>
+              </div>
               <input matInput name="searchTerm" autocomplete="off" placeholder="{{searchTermName}}"
                 [(ngModel)]="searchTerm">
             </mat-form-field>
@@ -34,11 +37,17 @@
   <!-- Embed Form -->
   <form *ngIf="!isPage" class="search" #searchForm="ngForm" (ngSubmit)="search()">
     <mat-form-field appearance="outline" class="w-50">
+      <div *ngIf="searchTerm?.length" style="position: absolute; right: 10px; cursor: pointer;" (click)="searchTerm=''; search('');">
+        <span class="mr-1">❌</span>
+      </div>
       <input matInput name="searchTerm" autocomplete="off" placeholder="{{searchTermName}}" [(ngModel)]="searchTerm">
     </mat-form-field>
     <div>
       <button type="submit" class="d-inline-block btn"
-        [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">Search</button>
+        [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">
+        <span class="d-inline-block d-sm-none">🔎</span>
+        <span class="d-none d-sm-block">Search</span>
+      </button>
     </div>
   </form>
 

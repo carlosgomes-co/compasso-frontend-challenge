@@ -1,11 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from '@app/app-routing.module';
 import { HeaderModule } from '@header/header.module';
 import { UserModule } from '@user/user.module';
-import { LoaderModule } from '@shared/components/loader/loader.module';
 
 import { AppComponent } from '@app/app.component';
 
@@ -18,8 +17,7 @@ import { AppComponent } from '@app/app.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HeaderModule,
-    UserModule,
-    LoaderModule
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

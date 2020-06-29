@@ -1,13 +1,11 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 
 import { ApiService } from '@shared/services/api/api.service';
-
 import { fade } from '@shared/animations/fade';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
   animations: [fade]
 })
 export class ListComponent implements OnChanges {

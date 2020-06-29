@@ -18,7 +18,12 @@ export class ApiService {
   /**
    * Last search performed results
    */
-  public lastSearchResult: any[];
+  public lastSearchResult: any = {};
+
+  /**
+   * User loaded details
+   */
+  public usersDetails: any = {};
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,6 +37,31 @@ export class ApiService {
       return this.httpClient.get<any>(`${this.endpoint}/search/users?q=${searchTerm}`).toPromise();
     } else {
       return new Promise((resolve) => resolve(this.lastSearchResult));
+    }
+  }
+
+  /**
+   * Load User Information
+   * @param userName User login
+   */
+  public async loadUser(userName: string): Promise<any> {
+    if (!this.usersDetails[userName]) {
+      return this.httpClient.get<any>(`${this.endpoint}/users/${userName}`).toPromise();
+    } else {
+      return new Promise((resolve) => resolve(this.usersDetails[userName]));
+    }
+  }
+
+  /**
+   * Load User Information
+   * @param userName User login
+   * @param type Repos or Starred
+   */
+  public async loadRepos(userName: string, type: string): Promise<any> {
+    if (!this.usersDetails[userName][`${type}`]) {
+      return this.httpClient.get<any>(`${this.endpoint}/users/${userName}/${type}`).toPromise();
+    } else {
+      return new Promise((resolve) => resolve(this.usersDetails[userName][`${type}`]));
     }
   }
 }

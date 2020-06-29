@@ -17,6 +17,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() searchTermName = 'UserName';
 
   /**
+   * Search term
+   */
+  @Input() term = '';
+
+  /**
    * Needs to be displayed as a Page?
    */
   @Input() isPage: boolean;
@@ -49,7 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.isPage === undefined) {
       this.isPage$ = this.activatedRoute.data.subscribe(({ isPage }) => this.isPage = isPage);
     }
-    this.searchTerm$ = this.activatedRoute.params.subscribe(({ searchTerm }) => this.searchTerm = searchTerm ? searchTerm : '');
+    this.searchTerm$ = this.activatedRoute.params.subscribe(({ searchTerm }) => this.searchTerm = searchTerm ? searchTerm : this.term);
   }
 
   ngOnDestroy(): void {

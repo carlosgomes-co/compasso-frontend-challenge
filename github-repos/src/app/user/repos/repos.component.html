@@ -1,3 +1,31 @@
-<section>
-  <header></header>
-</section>
+<div class="repos">
+  <h4>
+    <div [ngSwitch]="type" class="color-accent font-family-accent font-size-3 mt-4">
+      <span *ngSwitchCase="'repos'" @fade>
+        📁 <small>{{data?.length ? ('('+ data.length +') ') : ''}}</small>
+        Repos from {{userName}}
+      </span>
+      <span *ngSwitchCase="'starred'" @fade>
+        ⭐ <small>{{data?.length ? ('('+ data.length +') ') : ''}}</small>
+        Starred repos from {{userName}}
+      </span>
+    </div>
+  </h4>
+
+  <hr>
+
+  <ul *ngIf="data?.length" @fade>
+    <li *ngFor="let item of data" class="text-center">
+      <a class="w-100" [href]="item.html_url" [ngbTooltip]="'View '+ item.login +' details'">
+        {{item.owner.login}} / {{item.name}}
+      </a>
+    </li>
+  </ul>
+
+  <div *ngIf="loading" class="loading" [ngbTooltip]="'Loading'">
+    <div class="loader" @fade>
+      <div class="logo-wrapper">Loading</div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+</div>

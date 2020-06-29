@@ -107,6 +107,18 @@ $font_weights: (
     /* class */
     .font-size-#{$number} {
       font-size: $font_size;
+      @media (min-width: 300px) {
+        font-size: $font_size * 0.7;
+      }
+      @media (min-width: 576px) {
+        font-size: $font_size * 0.8;
+      }
+      @media (min-width: 768px) {
+        font-size: $font_size * 0.9;
+      }
+      @media (min-width: 992px) {
+        font-size: $font_size;
+      }
     }
   }
 

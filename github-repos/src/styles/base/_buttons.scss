@@ -3,7 +3,6 @@
   @include transition(all 0.2s ease-out);
   min-width: 111px;
   min-height: 41px;
-  // background-color: $accent;
   background-color: transparentize($accent, 0.5);
   border: none;
   font-weight: $bold;
@@ -12,7 +11,18 @@
   letter-spacing: 0.33px;
   color: $white;
   cursor: pointer;
-  
+
+  @media (min-width: 300px) {
+    & {
+      min-width: 40px;
+    }
+  }
+  @media (min-width: 576px) {
+    & {
+      min-width: 70px;
+    }
+  }
+
   &:hover {
     @extend .color-accent-hover;
     @extend .font-size-4;

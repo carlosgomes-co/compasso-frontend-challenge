@@ -1,5 +1,12 @@
 .list {
-  @extend .p-5;
+  padding: 3rem;
+
+  @media (min-width: 300px) {
+    & { padding: 10px; }
+  }
+  @media (min-width: 576px) {
+    & { padding: 20px; }
+  }
 
   h3 {
     @extend .font-family-accent;
@@ -34,6 +41,13 @@
       background: linear-gradient(140deg, transparentize($primary, 0.99), transparentize($primary, 0.8));
       display: flex;
       border-radius: 5px;
+
+      @media (min-width: 300px) {
+        & { min-width: 110px; }
+      }
+      @media (min-width: 576px) {
+        & { min-width: 125px; }
+      }
 
       &:hover {
         background: linear-gradient(180deg, transparentize($accent, 0.6), $accent);
