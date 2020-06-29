@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { fade } from '@shared/animations/fade';
@@ -19,35 +19,50 @@ export class HeaderComponent implements OnInit, OnDestroy {
   /**
    * Needs to be displayed as a Page?
    */
-  @Input() isPage = false;
+  @Input() isPage: boolean;
 
   /**
-   * Get isPage value
+   * Get isPage value subscription
    */
   private isPage$: Subscription;
 
   /**
    * Search term
    */
-  public searchTerm: string;
+  public searchTerm = '';
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  /**
+   * Get searchTerm subscription
+   */
+  private searchTerm$: Subscription;
+
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     /**
      * Component needs to be displayed as a page?
      */
-    this.isPage$ = this.activatedRoute.data.subscribe(({ isPage }) => this.isPage = isPage);
+    if (this.isPage === undefined) {
+      this.isPage$ = this.activatedRoute.data.subscribe(({ isPage }) => this.isPage = isPage);
+    }
+    this.searchTerm$ = this.activatedRoute.params.subscribe(({ searchTerm }) => this.searchTerm = searchTerm ? searchTerm : '');
   }
 
   ngOnDestroy(): void {
-    this.isPage$.unsubscribe();
+    if (this.isPage$) {
+      this.isPage$.unsubscribe();
+    }
+    this.searchTerm$.unsubscribe();
   }
 
   /**
    * Search GitHub Repos by UserName
    */
   public search(): void {
-
+    this.router.navigateByUrl(`/users/${this.searchTerm}`);
   }
 }

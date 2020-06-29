@@ -1,21 +1,20 @@
 <header class="header" [ngClass]="{'page': isPage}">
   <h1>
-    <span class="d-none d-sm-inline color-accent font-size-4 text-uppercase mr-1">Find</span>
-    GitHub Repos
-    <span class="d-none d-sm-inline color-accent font-size-4 text-uppercase ml-1 mr-1" >By</span>
-    <span class="d-none d-sm-inline ">{{searchTermName}}</span>
+    <span class="d-none d-sm-inline color-accent font-size-4 text-uppercase separator">Find</span>GitHub Repos<span
+      class="d-none d-sm-inline color-accent font-size-4 text-uppercase separator">By</span><span
+      class="d-none d-sm-inline">{{searchTermName}}</span>
   </h1>
-  <form class="search container mt-3" #searchForm="ngForm" (ngSubmit)="search()">
-     <div @fade class="row">
+
+  <!-- Page Form -->
+  <form *ngIf="isPage" class="search container" #searchForm="ngForm" (ngSubmit)="search()">
+    <div @fade class="row">
       <div class="col">
         <!-- Search Input -->
         <div class="row">
-          <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5">
+          <div
+            class="col-8 offset-2 col-sm-6 offset-sm-3 col-md-4 offset-md-4 col-lg-4 offset-lg-4 col-xl-2 offset-xl-5">
             <mat-form-field appearance="outline" class="w-100">
-              <input matInput
-                name="document"
-                autocomplete="off"
-                placeholder="{{searchTermName}}"
+              <input matInput name="searchTerm" autocomplete="off" placeholder="{{searchTermName}}"
                 [(ngModel)]="searchTerm">
             </mat-form-field>
           </div>
@@ -24,10 +23,23 @@
         <!-- Search Button -->
         <div class="row">
           <div class="col text-center">
-            <button type="submit" class="d-inline-block btn mt-3" [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">Search</button>
+            <button type="submit" class="d-inline-block btn mt-3"
+              [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">Search</button>
           </div>
         </div>
       </div>
     </div>
   </form>
+
+  <!-- Embed Form -->
+  <form *ngIf="!isPage" class="search" #searchForm="ngForm" (ngSubmit)="search()">
+    <mat-form-field appearance="outline" class="w-50">
+      <input matInput name="searchTerm" autocomplete="off" placeholder="{{searchTermName}}" [(ngModel)]="searchTerm">
+    </mat-form-field>
+    <div>
+      <button type="submit" class="d-inline-block btn"
+        [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">Search</button>
+    </div>
+  </form>
+
 </header>

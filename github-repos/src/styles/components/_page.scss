@@ -7,6 +7,7 @@ html {
     @extend .full-width;
     @extend .full-height;
     @extend .font-family-primary;
+    @extend .background-color-background;
     @include transition(all 0.3s ease-in);
 
     * {
@@ -22,7 +23,58 @@ html {
         @extend .full-height;
       }
     }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading {
+      @include transition(all 0.5s ease-in-out);
+      text-align: center;
+      margin-top: 40vh;
+
+      .loader {
+        width: 40px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+
+        .logo-wrapper {
+          @extend .color-accent-hover;
+          @extend .font-size-4;
+          @extend .font-family-accent;
+          width: 80px;
+          height: 80px;
+          line-height: 77px;
+          position: absolute;
+
+          img {
+            max-width: 30px;
+            margin-top: 17px;
+          }
+        }
+
+        .spinner {
+          border: 2px solid transparentize($accent-hover, 0.85);
+          border-radius: 50%;
+          border-top: 2px solid $accent-hover;
+          width: 40px;
+          height: 40px;
+          box-shadow: 0 0px 40px 0 transparentize($accent-hover, 0.8);
+          animation: spin 2s linear infinite;
+        }
+      }
+    }
+    @include loader(80);
   }
 }
 
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}

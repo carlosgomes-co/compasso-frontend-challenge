@@ -1,5 +1,5 @@
 /* Theme colors */
-$background: #f8f9fd;
+$background: #3e3f6f;
 $background-active: #f8f9fd;
 $primary: #24ddeb;
 $accent: #712acf;
@@ -16,8 +16,8 @@ $grey-9: #d3d5e0;
 $grey-10: #fcfcfe;
 
 $colors: (
-  "bg": $background,
-  "bg-active": $background-active,
+  "background": $background,
+  "background-active": $background-active,
   "primary": $primary,
   "accent": $accent,
   "accent-hover": $accent-hover,

@@ -1,1 +1,66 @@
-// .list { }
+.list {
+  @extend .p-5;
+
+  h3 {
+    @extend .font-family-accent;
+    @extend .font-size-1;
+    @extend .color-accent-hover;
+    text-shadow: 1px 1px 1px $primary;
+  }
+
+  hr {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid transparentize($primary, 0.8);
+    border-left: none;
+  }
+
+  ul {
+    @extend .mt-4;
+    @extend .p-0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    li {
+      @extend .m-3;
+      @extend .p-1;
+      @include transition(all 0.8s ease-in-out);
+      min-width: 135px;
+      background: linear-gradient(140deg, transparentize($primary, 0.99), transparentize($primary, 0.8));
+      display: flex;
+      border-radius: 5px;
+
+      &:hover {
+        background: linear-gradient(180deg, transparentize($accent, 0.6), $accent);
+
+        img {
+          box-shadow: 1px 1px 1px transparentize($grey-1, 0.1), 1px 1px 20px transparentize($grey-1, 0.1);
+        }
+      }
+
+      a {
+        text-decoration: none;
+
+        img {
+          @extend .mt-2;
+          box-shadow: 1px 1px 1px transparentize($primary, 0.5), 1px 1px 20px transparentize($primary, 0.6);
+          border-radius: 100px;
+        }
+
+        p {
+          @extend .mt-1;
+          @extend .mb-1;
+          @extend .font-family-accent;
+          @extend .font-size-4;
+          @extend .color-accent-hover;
+          text-shadow: 1px 1px 1px $grey-1;
+        }
+      }
+    }
+  }
+}

@@ -58,10 +58,11 @@
 // @import "~ngx-toastr/toastr.css"; 
 
 /* Mixins */
+@import 'mixins/css3-prefix';
 @import 'mixins/border-radius';
 @import 'mixins/box-sizing';
-@import 'mixins/css3-prefix';
 @import 'mixins/transition';
+@import 'mixins/loader';
 
 /* Base Styles */
 @import 'base/fonts';
@@ -75,3 +76,4 @@
 /* Components */
 @import "components/page";
 @import "components/header";
+@import "components/list";

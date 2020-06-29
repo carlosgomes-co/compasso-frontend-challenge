@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Search term
+   */
+  public searchTerm = '';
+
+  /**
+   * Get searchTerm subscription
+   */
+  private searchTerm$: Subscription;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.searchTerm$ = this.activatedRoute.params.subscribe(({ searchTerm }) => this.searchTerm = searchTerm ? searchTerm : '');
   }
 
 }

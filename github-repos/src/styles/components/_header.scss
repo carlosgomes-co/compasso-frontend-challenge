@@ -1,5 +1,13 @@
 header {
   &.header {
+    @extend .background-color-primary;
+    @extend .pt-2;
+    @extend .pb-2;
+    height: 60px;
+    background: linear-gradient(190deg, transparentize($accent, 0.3), transparentize($accent-hover, 0.5));
+    display: flex;
+    flex-direction: row;
+
     &.page {
       @extend .background-color-primary;
       background: linear-gradient(180deg, transparentize($accent, 0.3), transparentize($accent-hover, 0.5));
@@ -9,10 +17,39 @@ header {
       align-items: center;
 
       h1 {
-        @extend .color-accent-hover;
+        @extend .pt-0;
+        @extend .pb-4;
+        @extend .pl-0;
         display: flex;
+        flex: 0;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+      }
+      
+      form {
+        display: inline-block;
+        flex: 0;
+
+        .btn {
+          @extend .ml-2;
+          @extend .mr-2;
+        }
+      }
+    }
+
+    h1 {
+      @extend .pl-4;
+      @extend .m-0;
+      @extend .color-accent-hover;
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+      align-items: center;
+
+      .separator {
+        @extend .pl-2;
+        @extend .pr-2;
       }
     }
 
@@ -23,7 +60,15 @@ header {
     }
 
     form {
-      @extend .full-width;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      flex: 1;
+
+      .btn {
+        @extend .ml-2;
+        @extend .mr-4;
+      }
     }
   }
 }

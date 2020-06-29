@@ -14,6 +14,7 @@ import { HeaderComponent } from '@header/header.component';
     MaterialModule,
     BootstrapModule,
     HeaderRouterModule
-  ]
+  ],
+  exports: [HeaderComponent]
 })
 export class HeaderModule { }

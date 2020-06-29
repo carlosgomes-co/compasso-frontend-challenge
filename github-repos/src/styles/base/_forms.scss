@@ -23,7 +23,7 @@
             border-radius: 50px 0 0 50px;
             min-width: 50px;
           }
-          
+
           .mat-form-field-outline-end {
             border: 1px solid $accent;
             border-left-style: none;
@@ -47,6 +47,12 @@
           padding: 20px 0 11px 0;
           border-top: 5px;
           color: $accent;
+          &:hover {
+            input {
+              @include transition(all 0.2s ease-out);
+              color: $accent-hover;
+            }
+          }
 
           .mat-select {
             .mat-select-trigger {
