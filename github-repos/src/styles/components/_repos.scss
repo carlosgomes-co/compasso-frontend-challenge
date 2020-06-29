@@ -1,4 +1,25 @@
 .repos {
+  ol {
+    @extend .p-0;
+    @extend .pl-4;
+    @extend .color-grey-3;
+    @extend .font-family-accent;
+    @extend .font-size-4;
+    @extend .color-accent;
+    max-height: 60vh;
+    overflow-y: scroll;
+
+    li {
+      @extend .pb-1;
+
+      a {
+        @extend .font-family-secondary;
+        @extend .font-size-3;
+        @extend .color-grey-3;
+      }
+    }
+  }
+
   .loading {
     @extend .mt-5;
     @extend .mb-5;

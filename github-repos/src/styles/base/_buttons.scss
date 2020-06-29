@@ -11,6 +11,7 @@
   letter-spacing: 0.33px;
   color: $white;
   cursor: pointer;
+  box-sizing: border-box;
 
   @media (min-width: 300px) {
     & {
@@ -25,7 +26,7 @@
 
   &:hover {
     @extend .color-accent-hover;
-    @extend .font-size-4;
+    transform: scale3d(0.8, 0.8, 0.8);
     background-color: $accent;
     box-shadow: 0 10px 10px 0 transparentize($accent, 0.85);
   }

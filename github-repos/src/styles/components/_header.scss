@@ -5,8 +5,11 @@ header {
     @extend .pb-2;
     height: 60px;
     background: linear-gradient(190deg, transparentize($accent, 0.3), transparentize($accent-hover, 0.5));
-    display: flex;
-    flex-direction: row;
+
+    display: grid;
+    grid-template-columns: 50vw;
+    grid-template-rows: 50px;
+    grid-auto-flow: column;
     overflow: hidden;
 
     &.page {
@@ -17,17 +20,19 @@ header {
       justify-content: center;
       align-items: center;
 
-      h1 {
-        @extend .pt-0;
-        @extend .pb-4;
-        @extend .pl-0;
-        display: flex;
-        flex: 0;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      a {
+        h1 {
+          @extend .pt-0;
+          @extend .pb-4;
+          @extend .pl-0;
+          display: flex;
+          flex: 0;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
       }
-      
+
       form {
         display: inline-block;
         flex: 0;
@@ -39,33 +44,35 @@ header {
       }
     }
 
-    h1 {
-      @extend .pl-4;
-      @extend .m-0;
-      @extend .color-accent-hover;
-      display: flex;
-      flex: 1;
-      justify-content: flex-start;
-      align-items: center;
+    a {
+      @extend .pt-1;
+      text-decoration: none;
 
-      .separator {
-        @extend .pl-2;
-        @extend .pr-2;
+      h1 {
+        @extend .pl-4;
+        @extend .m-0;
+        @extend .color-accent-hover;
+        display: flex;
+        flex: 1;
+        justify-content: flex-start;
+        align-items: center;
+
+        .separator {
+          @extend .pl-2;
+          @extend .pr-2;
+        }
+      }
+
+      h1,
+      .term {
+        @extend .color-accent;
+        @extend .font-family-accent;
+        @extend .font-size-2;
       }
     }
 
-    h1,
-    .term {
-      @extend .color-accent;
-      @extend .font-family-accent;
-      @extend .font-size-2;
-    }
-
     form {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      flex: 1;
+      @extend .text-right;
 
       .btn {
         @extend .ml-2;

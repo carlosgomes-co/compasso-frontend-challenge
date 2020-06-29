@@ -50,7 +50,6 @@ export class DetailsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('this.data', this.data);
     this.apiService.loadUser(this.userName).then((results) => {
       this.apiService.usersDetails[this.userName] = this.data = results;
       this.loading = false;

@@ -6,34 +6,77 @@
     @extend .font-size-1;
     text-shadow: 1px 1px 1px $primary;
 
-    .back-btn {
-      @extend .mt-3;
-      @extend .mr-3;
-      @extend .font-family-secondary;
-      @extend .font-size-2;
-      @extend .color-accent;
-      @include transition(all 0.3s ease-in-out);
-      text-decoration: none;
+    .avatar {
+      display: block;
 
-      &:hover {
-        @extend .color-accent-hover;
+      .back-btn {
+        @extend .font-family-secondary;
+        @extend .font-size-2;
+        @extend .color-accent;
+        @include transition(all 0.3s ease-in-out);
+        text-decoration: none;
+
+        a {
+          margin-top: 0.5rem;
+          margin-right: 0rem;
+        }
+
+        &:hover {
+          @extend .color-accent-hover;
+        }
+      }
+
+      img {
+        max-width: 100%;
+        box-shadow: 1px 1px 1px transparentize($primary, 0.5), 1px 1px 20px transparentize($primary, 0.6);
+        border-radius: 100px;
       }
     }
 
     a {
       @extend .color-accent-hover;
-    }
+      display: inline-flex;
+      margin-top: 1.6rem;
+      // margin-right: 0rem;
 
-    img {
-      box-shadow: 1px 1px 1px transparentize($primary, 0.5), 1px 1px 20px transparentize($primary, 0.6);
-      border-radius: 100px;
-    }
+      // &:last-child {
+      //   width: 100%;
+      //   display: block;
+      //   text-align: center;
+      //   margin-left: 0;
+      // }
 
-    .extra-info {
-      @extend .font-family-accent;
-      @extend .font-size-4;
+      @media (min-width: 576px) {
+        // &:last-child {
+        //   width: auto;
+        //   display: inline-flex;
+        //   text-align: left;
+        //   margin-left: 1rem;
+        // }
+        display: inline-flex;
+        // margin-top: 1rem;
+        // margin-left: 1rem;
+      }
+      // @media (min-width: 576px) {
+      //   font-size: $font_size * 0.8;
+      // }
+      // @media (min-width: 768px) {
+      //   font-size: $font_size * 0.9;
+      // }
+      // @media (min-width: 992px) {
+      //   font-size: $font_size;
+      // }
+    }
+  }
+
+  .extra-info {
+    @extend .font-family-accent;
+    @extend .font-size-3;
+    @extend .color-accent-hover;
+    text-shadow: 1px 1px 1px $grey-1;
+    
+    a {
       @extend .color-accent-hover;
-      text-shadow: 1px 1px 1px $grey-1;
     }
   }
 
@@ -49,7 +92,6 @@
     @extend .mt-1;
     @include transition(all 0.5s ease-in-out);
     text-align: center;
-    float: right;
 
     .loader {
       width: 40px;
@@ -91,8 +133,8 @@
   @extend .h-75;
   @extend .d-flex;
   padding-top: 15vh;
-  position: absolute; 
-  top: 0; 
+  position: absolute;
+  top: 0;
   left: 0;
 
   .container {

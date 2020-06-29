@@ -1,9 +1,11 @@
 <header class="header" [ngClass]="{'page': isPage}">
-  <h1>
-    <span class="d-none d-sm-inline color-accent font-size-4 text-uppercase separator">Find</span>GitHub Repos<span
+  <a routerLink="/search" [ngbTooltip]="'Make a new search'">
+    <h1>
+      <span class="d-none d-sm-inline color-accent font-size-4 text-uppercase separator">Find</span>GitHub Repos<span
       class="d-none d-sm-inline color-accent font-size-4 text-uppercase separator">By</span><span
       class="d-none d-sm-inline">{{searchTermName}}</span>
-  </h1>
+    </h1>
+  </a>
 
   <!-- Page Form -->
   <form *ngIf="isPage" class="search container" #searchForm="ngForm" (ngSubmit)="search()">
@@ -42,7 +44,7 @@
       </div>
       <input matInput name="searchTerm" autocomplete="off" placeholder="{{searchTermName}}" [(ngModel)]="searchTerm">
     </mat-form-field>
-    <div>
+    <div class="d-inline-flex">
       <button type="submit" class="d-inline-block btn"
         [ngbTooltip]="'Search '+ (searchTerm ? 'for '+searchTerm : '') +' in GitHub'">
         <span class="d-inline-block d-sm-none">🔎</span>

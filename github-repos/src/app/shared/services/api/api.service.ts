@@ -58,7 +58,7 @@ export class ApiService {
    * @param type Repos or Starred
    */
   public async loadRepos(userName: string, type: string): Promise<any> {
-    if (!this.usersDetails[userName][`${type}`]) {
+    if (!this.usersDetails[userName] || !this.usersDetails[userName][`${type}`]) {
       return this.httpClient.get<any>(`${this.endpoint}/users/${userName}/${type}`).toPromise();
     } else {
       return new Promise((resolve) => resolve(this.usersDetails[userName][`${type}`]));

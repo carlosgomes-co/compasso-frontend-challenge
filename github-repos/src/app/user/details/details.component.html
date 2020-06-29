@@ -3,48 +3,63 @@
   <div class="details" @fade>
     <h3 *ngIf="data && data.avatar_url">
       <div class="row">
-        <div class="col-12 col-lg-6">
-          <a class="back-btn" href="javascript: history.back();" [ngbTooltip]="'Go back to search results'" placement="top-left">◀</a>
-          <img [alt]="data.login" [width]="45" [height]="45" [src]="data.avatar_url">
-          <a class="ml-4" [href]="data.html_url" target="_blank"
-            [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' profile in GitHub'">{{data?.login}}</a>
+        <div class="col-12">
+          <span class="avatar">
+            <div class="row">
+              <div class="col-4 col-sm-5 text-right">
+                <a class="back-btn" href="javascript: history.back();" [ngbTooltip]="'Go back to search results'"
+                  placement="top-left">◀</a>
+              </div>
+              <div class="col-4 col-sm-2 text-center">
+                <img [alt]="data.login" [width]="80" [src]="data.avatar_url">
+              </div>
+              <div class="col">
+              </div>
+            </div>
+          </span>
+          <div class="row">
+            <div class="col text-center pb-3">
+              <a [href]="data.html_url" target="_blank"
+                [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' profile in GitHub'">{{data?.login}}</a>
+            </div>
+          </div>
         </div>
-        <div *ngIf="loading" class="col-12 col-lg-6">
+        <div *ngIf="loading" class="col-12">
           <div class="loading" [ngbTooltip]="'Loading'">
             <div class="loader" @fade>
               <div class="spinner"></div>
             </div>
           </div>
         </div>
-        <div *ngIf="!loading && data?.name || !loading && data?.location || !loading && data?.blog" class="col-12 col-lg-4 mt-4 mt-lg-0">
-          <div class="extra-info">
-            <span *ngIf="data?.name" @fade>
-              Nome: {{data.name}}<br>
-            </span>
-            <span *ngIf="data?.location" @fade>
-              Local: {{data.location}}<br>
-            </span>
-            <span *ngIf="data?.blog" @fade>
-              Site: <a [href]="data.blog" target="_blank"
-                [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' site in a new window'">{{data?.blog}}</a><br>
-            </span>
-          </div>
-        </div>
       </div>
     </h3>
+    <div *ngIf="!loading && data?.name || !loading && data?.location || !loading && data?.blog" class="col-12 pt-4">
+      <div class="extra-info">
+        <p *ngIf="data?.name" @fade>
+          Nome: {{data.name}}<br>
+        </p>
+        <p *ngIf="data?.location" @fade>
+          Local: {{data.location}}<br>
+        </p>
+        <p *ngIf="data?.blog" @fade>
+          Site: <a [href]="data.blog" target="_blank" class="text-break"
+            [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' site in a new window'">{{data?.blog}}</a><br>
+        </p>
+      </div>
+    </div>
     <hr *ngIf="data && data.avatar_url">
     <div *ngIf="data && data.avatar_url" class="row">
       <!-- Repos Button -->
       <div class="col-12 col-sm-6 text-center">
         <button type="submit" class="d-inline-block btn mt-3"
           [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' Repositories'"
-          (click)="modalRepos='repos'">View Repos</button>
+          (click)="modalRepos='repos'">📁 View Repos</button>
       </div>
       <!-- Starred Button -->
       <div class="col-12 col-sm-6 text-center">
         <button type="submit" class="d-inline-block btn mt-3"
           [ngbTooltip]="'View '+ (data?.name ? data?.name : data?.login) +' Starred Repositories'"
-          (click)="modalRepos='starred'">View Starred Repos</button>
+          (click)="modalRepos='starred'">⭐ View Starred Repos</button>
       </div>
     </div>
   </div>
@@ -60,8 +75,8 @@
 
 <div *ngIf="modalRepos" class="modal justify-content-center">
   <div class="container" @fade>
-    <div class="d-block text-right mt-3" style="cursor: pointer; float: right;"><span [ngbTooltip]="'Close '+ modalRepos + ' modal'"
-      (click)="modalRepos=''">❌</span></div>
+    <div class="d-block text-right mt-3" style="cursor: pointer; float: right;"><span
+        [ngbTooltip]="'Close '+ modalRepos + ' modal'" (click)="modalRepos=''">❌</span></div>
     <div class="row">
       <div class="col">
         <app-repos [userName]="userName" [type]="modalRepos"></app-repos>
